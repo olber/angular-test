@@ -1,8 +1,10 @@
 import {Component, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {TeamService} from '../service/team.service';
 
 export interface DialogData {
-  animal: string;
+  id: number;
+  city: string;
   name: string;
 }
 
@@ -12,8 +14,8 @@ export interface DialogData {
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent {
-
-  animal: string;
+  id: number;
+  city: string;
   name: string;
 
   constructor(public dialog: MatDialog) {
@@ -22,12 +24,14 @@ export class DialogComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal}
+      data: {name: this.name, city: this.city}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      this.id = result.id;
+      this.city = result.city;
+      this.name = result.name;
     });
   }
 
@@ -41,11 +45,24 @@ export class DialogOverviewExampleDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private teamService: TeamService) {
   }
 
   onNoClick(): void {
     this.dialogRef.componentInstance.dialogRef.close(this.data);
+  }
+
+  onYesClick(): void {
+    console.log(this.data.id);
+    if (!this.data.id) {
+      console.log('i am in if');
+      this.teamService.addTeam(this.data.name, this.data.city).subscribe(data => {
+      });
+    } else {
+      console.log('i am in else');
+      this.teamService.updateTeam(this.data.id, this.data.name, this.data.city).subscribe(data => {
+      });
+    }
   }
 
 }
