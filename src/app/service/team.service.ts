@@ -22,4 +22,13 @@ export class TeamService {
   deleteTeamById(id: number) {
     return this.http.get(this.baseUrl + 'delete?id=' + id);
   }
+
+  addTeam(name: string, city: string) {
+    return this.http.post(this.baseUrl + 'add/?city=' + city + '&name=' + name, {});
+  }
+
+  updateTeam(id: number, name: string, city: string) {
+    console.log(this.baseUrl + 'update?id=' + id + '&city=' + city + '&name=' + name);
+    return this.http.post(this.baseUrl + 'update?id=' + id + '&city=' + city + '&name=' + name, {});
+  }
 }

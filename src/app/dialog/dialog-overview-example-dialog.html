@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Новая команда</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <label>
+      <input matInput [(ngModel)]="data.name" placeholder="Название">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      <input matInput [(ngModel)]="data.city" placeholder="Город">
+    </label>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Отменить</button>
+  <button mat-button (click)="onYesClick()" [mat-dialog-close]="{name: data.name, city: data.city}" cdkFocusInitial>
+    Сохранить
+  </button>
+</div>
