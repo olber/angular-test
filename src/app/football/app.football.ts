@@ -4,6 +4,7 @@ import {TeamService} from '../service/team.service';
 import {Team} from '../model/team.model';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {DialogOverviewExampleDialogComponent} from '../dialog/dialog.component';
+import {City} from '../model/city.model';
 
 @Component({
   selector: 'app-football',
@@ -16,7 +17,7 @@ export class AppFootballComponent implements OnInit {
   datasource;
   displayedColumns = ['id', 'name', 'city', 'actions', 'actions2'];
   id: number;
-  city: string;
+  city: City;
   name: string;
 
   constructor(private router: Router, private teamService: TeamService, public dialog: MatDialog) {
@@ -27,11 +28,15 @@ export class AppFootballComponent implements OnInit {
       width: '250px',
       data: {id: this.id, name: this.name, city: this.city}
     });
-
+    console.log(this.city);
+    console.log('The dialog was opened');
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.ngOnInit();
     });
+    this.id = null;
+    this.city = null;
+    this.name = '';
   }
 
   ngOnInit() {
