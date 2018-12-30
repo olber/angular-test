@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Новая команда</h1>
+<h1 mat-dialog-title>{{title}}</h1>
 <div mat-dialog-content>
   <mat-form-field>
     <label>
@@ -6,9 +6,11 @@
     </label>
   </mat-form-field>
   <mat-form-field>
-    <label>
-      <input matInput [(ngModel)]="data.city" placeholder="Город">
-    </label>
+    <mat-select  [(ngModel)]="this.data.city" [compareWith]="compareObj" placeholder="Город">
+      <mat-option *ngFor="let city of cities" [value]="city">
+        {{city.name}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

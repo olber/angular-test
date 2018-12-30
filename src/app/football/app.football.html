@@ -9,15 +9,15 @@
       <mat-cell *matCellDef="let team">{{team.id}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Имя</mat-header-cell>
       <mat-cell *matCellDef="let team">{{team.name}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="city">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
-      <mat-cell *matCellDef="let team">{{team.city}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Город</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{team.city.name}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Действия</mat-header-cell>
       <mat-cell *matCellDef="let team">
         <button mat-stroked-button color="accent" (click)="onClickDelete(team)">Удалить</button>
       </mat-cell>

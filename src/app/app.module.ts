@@ -8,9 +8,19 @@ import {HttpClientModule} from '@angular/common/http';
 import {TeamService} from './service/team.service';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTableModule, MatSortModule, MatPaginatorModule, MatFormFieldModule} from '@angular/material';
-import {MatDialogModule, MatDialog, MatInputModule} from '@angular/material';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSortModule,
+  MatTableModule
+} from '@angular/material';
 import {DialogComponent, DialogOverviewExampleDialogComponent} from './dialog/dialog.component';
+import {CityService} from './service/city.service';
 
 
 @NgModule({
@@ -31,10 +41,12 @@ import {DialogComponent, DialogOverviewExampleDialogComponent} from './dialog/di
     MatDialogModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   entryComponents: [DialogOverviewExampleDialogComponent],
-  providers: [TeamService, MatDialog],
+  providers: [TeamService, CityService, MatDialog],
   bootstrap: [AppFootballComponent]
 })
 export class AppModule {

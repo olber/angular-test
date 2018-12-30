@@ -1,5 +1,7 @@
+import {City} from './city.model';
+
 export class Team {
   id: number;
   name: string;
-  city: string;
+  city: City;
 }
