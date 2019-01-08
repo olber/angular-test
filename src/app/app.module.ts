@@ -3,12 +3,13 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {AppFootballComponent} from './football/app.football';
+import {AppTableComponent} from './table/app.table';
 import {HttpClientModule} from '@angular/common/http';
 import {TeamService} from './service/team.service';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
+  MatButtonModule,
   MatDialog,
   MatDialogModule,
   MatFormFieldModule,
@@ -17,18 +18,21 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule,
+  MatIconModule
 } from '@angular/material';
-import {DialogComponent, DialogOverviewExampleDialogComponent} from './dialog/dialog.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {DialogComponent} from './dialog/app.dialog';
 import {CityService} from './service/city.service';
+import {HeaderComponent} from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppFootballComponent,
+    AppTableComponent,
     DialogComponent,
-    DialogOverviewExampleDialogComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,7 @@ import {CityService} from './service/city.service';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatButtonModule,
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
@@ -43,11 +48,13 @@ import {CityService} from './service/city.service';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatIconModule
   ],
-  entryComponents: [DialogOverviewExampleDialogComponent],
+  entryComponents: [DialogComponent],
   providers: [TeamService, CityService, MatDialog],
-  bootstrap: [AppFootballComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

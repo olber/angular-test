@@ -1,5 +1,5 @@
 export class City {
-  id: number;
+  _links;
   name: string;
   country: string;
 }

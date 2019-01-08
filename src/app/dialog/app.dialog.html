@@ -1,0 +1,23 @@
+<div class="dialog">
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <label>
+      <input matInput [(ngModel)]="data.team.name" placeholder="Название">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select  [(ngModel)]="this.data.team.city" [compareWith]="compareObj" placeholder="Город">
+      <mat-option *ngFor="let city of cities" [value]="city">
+        {{city?.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="center">
+  <button  mat-raised-button color="primary" (click)="onNoClick()">Отменить</button>
+  <button class="mat-raised-button" mat-button (click)="onYesClick()" [mat-dialog-close]="{name: data.team}" cdkFocusInitial>
+    Сохранить
+  </button>
+</div>
+</div>
