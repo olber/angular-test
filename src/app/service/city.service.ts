@@ -10,8 +10,12 @@ export class CityService {
   baseUrl = 'http://localhost:8082/cities/';
 
 
-  getTeams(): Observable<Object> {
+  getCities(): Observable<Object> {
     return this.http.get(this.baseUrl);
+  }
+
+  getCity(href: string): Observable<Object> {
+    return this.http.get(href);
   }
 
 }

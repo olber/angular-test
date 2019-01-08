@@ -1,13 +1,11 @@
 <head>
   <title>Лига</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 </head>
 <body>
+<app-header></app-header>
 <div class="tableDiv" align="center">
-  <table mat-table [dataSource]="datasource" matSort>
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-      <mat-cell *matCellDef="let team">{{team.id}}</mat-cell>
-    </ng-container>
+  <table class="mat-table" mat-table [dataSource]="datasource" matSort>
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Имя</mat-header-cell>
       <mat-cell *matCellDef="let team">{{team.name}}</mat-cell>
@@ -19,20 +17,20 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>Действия</mat-header-cell>
       <mat-cell *matCellDef="let team">
-        <button mat-stroked-button color="accent" (click)="onClickDelete(team)">Удалить</button>
+        <button  mat-raised-button color="warn" (click)="onClickDelete(team)">Удалить</button>
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions2">
       <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
       <mat-cell *matCellDef="let team">
-        <button mat-stroked-button color="accent" (click)="onClickUpdate(team)">Изменить</button>
+        <button  mat-raised-button color="primary" (click)="onClickUpdate(team)">Изменить</button>
       </mat-cell>
     </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
   </table>
   <div class="footer">
-    <mat-paginator align="center" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
   <button mat-raised-button (click)="openDialog()">Добавить</button>
 </div>
